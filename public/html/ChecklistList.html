@@ -1,0 +1,148 @@
+<!-- IMPORT MODULE DETAIL -->
+<!-- 
+
+	Module : 	ChecklistList
+	
+	Links : 	ChecklistEdit
+					/checklists/{id}
+.				
+	
+	Nesteds : 	
+				
+-->
+<!-- /IMPORT MODULE DETAIL -->
+<div ng-controller="ChecklistListController">
+	
+	<h1>ChecklistList</h1>
+	
+	<!-- SEARCH FORM -->
+	<div class="well">
+	    <form name="form_search" class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="Assingment">Assingment</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="checkbox" ng-model="search.Assingment" class="form-control" name="Assingment" id="Assingment" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="Class">Class</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.Class" class="form-control" name="Class" id="Class" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="DoneByStudent">DoneByStudent</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="checkbox" ng-model="search.DoneByStudent" class="form-control" name="DoneByStudent" id="DoneByStudent" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="DoneInClass">DoneInClass</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="checkbox" ng-model="search.DoneInClass" class="form-control" name="DoneInClass" id="DoneInClass" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="Doubt">Doubt</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="checkbox" ng-model="search.Doubt" class="form-control" name="Doubt" id="Doubt" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="DoubtClear">DoubtClear</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="checkbox" ng-model="search.DoubtClear" class="form-control" name="DoubtClear" id="DoubtClear" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="Lesson">Lesson</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.Lesson" class="form-control" name="Lesson" id="Lesson" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="StudentDoubtCount">StudentDoubtCount</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<select class="form-control" ng-model="search.StudentDoubtCount" name="StudentDoubtCount" id="StudentDoubtCount">
+						<option></option>
+						<option value="0">0</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="Subject">Subject</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.Subject" class="form-control" name="Subject" id="Subject" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="Test">Test</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="checkbox" ng-model="search.Test" class="form-control" name="Test" id="Test" >
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<!-- TABLE -->
+	<table class="table table-condensed table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>_id</th>
+				<th>Assingment</th>
+				<th>Class</th>
+				<th>DoneByStudent</th>
+				<th>DoneInClass</th>
+				<th>Doubt</th>
+				<th>DoubtClear</th>
+				<th>Lesson</th>
+				<th>StudentDoubtCount</th>
+				<th>Subject</th>
+				<th>Test</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in list | filter: {  Assingment:search.Assingment,  Class:search.Class,  DoneByStudent:search.DoneByStudent,  DoneInClass:search.DoneInClass,  Doubt:search.Doubt,  DoubtClear:search.DoubtClear,  Lesson:search.Lesson,  StudentDoubtCount:search.StudentDoubtCount,  Subject:search.Subject,  Test:search.Test,  }">
+				<td ng-bind="item._id" ng-link="/checklists/{{item._id}}"></td>
+				<td ng-bind="item.Assingment"></td>
+				<td ng-bind="item.Class"></td>
+				<td ng-bind="item.DoneByStudent"></td>
+				<td ng-bind="item.DoneInClass"></td>
+				<td ng-bind="item.Doubt"></td>
+				<td ng-bind="item.DoubtClear"></td>
+				<td ng-bind="item.Lesson"></td>
+				<td ng-bind="item.StudentDoubtCount"></td>
+				<td ng-bind="item.Subject"></td>
+				<td ng-bind="item.Test"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="mb-20" ng-if="list.$resolved && (list | filter :{   Assingment:search.Assingment,  Class:search.Class,  DoneByStudent:search.DoneByStudent,  DoneInClass:search.DoneInClass,  Doubt:search.Doubt,  DoubtClear:search.DoubtClear,  Lesson:search.Lesson,  StudentDoubtCount:search.StudentDoubtCount,  Subject:search.Subject,  Test:search.Test,  }).length == 0">
+        <b>No result found</b>
+    </div>
+
+	<!-- BUTTON -->
+	<button class="btn btn-primary" ng-link="/checklists/new">New</button>
+	
+</div>

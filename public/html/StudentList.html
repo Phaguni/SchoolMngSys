@@ -1,0 +1,125 @@
+<!-- IMPORT MODULE DETAIL -->
+<!-- 
+
+	Module : 	StudentList
+	
+	Links : 	StudentEdit
+					/students/{id}
+.				
+	
+	Nesteds : 	
+				
+-->
+<!-- /IMPORT MODULE DETAIL -->
+<div ng-controller="StudentListController">
+	
+	<h1>StudentList</h1>
+	
+	<!-- SEARCH FORM -->
+	<div class="well">
+	    <form name="form_search" class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="Address">Address</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.Address" class="form-control" name="Address" id="Address" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="DOB">DOB</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="date" ng-model="search.DOB" class="form-control" name="DOB" id="DOB" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="FathersName">FathersName</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.FathersName" class="form-control" name="FathersName" id="FathersName" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="FathersPhone">FathersPhone</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="number" ng-model="search.FathersPhone" class="form-control" name="FathersPhone" id="FathersPhone" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="FirstName">FirstName</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.FirstName" class="form-control" name="FirstName" id="FirstName" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="LastName">LastName</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.LastName" class="form-control" name="LastName" id="LastName" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="MiddleName">MiddleName</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.MiddleName" class="form-control" name="MiddleName" id="MiddleName" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3">
+					<label for="MothersName">MothersName</label>
+				</div>
+				<div class="col-sm-9 form-group" >
+					<input type="text" ng-model="search.MothersName" class="form-control" name="MothersName" id="MothersName" >
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<!-- TABLE -->
+	<table class="table table-condensed table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>_id</th>
+				<th>Address</th>
+				<th>DOB</th>
+				<th>FathersName</th>
+				<th>FathersPhone</th>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>MiddleName</th>
+				<th>MothersName</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in list | filter: {  Address:search.Address,  DOB:dateFilter(search.DOB),  FathersName:search.FathersName,  FathersPhone:search.FathersPhone,  FirstName:search.FirstName,  LastName:search.LastName,  MiddleName:search.MiddleName,  MothersName:search.MothersName,  }">
+				<td ng-bind="item._id" ng-link="/students/{{item._id}}"></td>
+				<td ng-bind="item.Address"></td>
+				<td ng-bind="item.DOB | date"></td>
+				<td ng-bind="item.FathersName"></td>
+				<td ng-bind="item.FathersPhone"></td>
+				<td ng-bind="item.FirstName"></td>
+				<td ng-bind="item.LastName"></td>
+				<td ng-bind="item.MiddleName"></td>
+				<td ng-bind="item.MothersName"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="mb-20" ng-if="list.$resolved && (list | filter :{   Address:search.Address,  DOB:dateFilter(search.DOB),  FathersName:search.FathersName,  FathersPhone:search.FathersPhone,  FirstName:search.FirstName,  LastName:search.LastName,  MiddleName:search.MiddleName,  MothersName:search.MothersName,  }).length == 0">
+        <b>No result found</b>
+    </div>
+
+	<!-- BUTTON -->
+	<button class="btn btn-primary" ng-link="/students/new">New</button>
+	
+</div>
