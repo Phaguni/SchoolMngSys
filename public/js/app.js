@@ -67,7 +67,7 @@ var app = angular.module('SchoolMngSys_App', [
 	.when('/users', {
 	  templateUrl: 'html/UserList.html',
 	  resolve: {
-		  user: ["AuthenticationService", function(AuthenticationService) { return AuthenticationService.isAuthenticated(); }]
+		  user: ["AuthenticationService", function(AuthenticationService) { return AuthenticationService.hasRole([ 'ADMIN', ]); }]
 	  },
 	})
 

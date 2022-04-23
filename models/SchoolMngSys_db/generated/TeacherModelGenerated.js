@@ -69,6 +69,10 @@ const generatedModel = {
         type: Schema.ObjectId,
         ref: "Exam"
       },
+      _Teacher: {
+        type: Schema.ObjectId,
+        ref: "User"
+      },
       */
     });
 

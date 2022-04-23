@@ -54,6 +54,15 @@ const generatedModel = {
         required: true
       },
       // RELATIONS
+      _Student: {
+        type: Schema.ObjectId, 
+        required: true,
+        ref: "Student"
+      },
+      _Teacher: {
+        type: Schema.ObjectId,
+        ref: "Teacher"
+      },
       
       
       // EXTERNAL RELATIONS

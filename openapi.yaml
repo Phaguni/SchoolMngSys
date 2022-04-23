@@ -1423,7 +1423,18 @@ components:
           x-skaffolder-id-attr: 62623cfdc97c70218d6536c6
           x-skaffolder-type: String
           x-skaffolder-required: true
-      x-skaffolder-relations: 
+      x-skaffolder-relations:
+        _Student:
+          x-skaffolder-id: 6263e275c97c70218d65384a
+          x-skaffolder-type: 1:m
+          x-skaffolder-required: true
+          x-skaffolder-ent1: 62623cfdc97c70218d6536c5
+          x-skaffolder-ent2: 62623f6ac97c70218d65371f
+        _Teacher:
+          x-skaffolder-id: 6263e275c97c70218d65384b
+          x-skaffolder-type: 1:m
+          x-skaffolder-ent1: 62623cfdc97c70218d6536c5
+          x-skaffolder-ent2: 62624039c97c70218d653727
       required:
         - _id
         - password
@@ -1573,7 +1584,8 @@ components:
         - 626246bec97c70218d65377a
         - 626246cdc97c70218d65378a
         - 626246dbc97c70218d653793
-      x-skaffolder-roles: []
+      x-skaffolder-roles:
+        - 62623cfdc97c70218d6536cf
   x-skaffolder-roles: 
     - x-skaffolder-id: 62623cfdc97c70218d6536cf
       x-skaffolder-name: ADMIN
