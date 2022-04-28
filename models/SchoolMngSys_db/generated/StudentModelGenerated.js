@@ -37,6 +37,9 @@ const generatedModel = {
         type: "String", 
         required: true
       },
+      Class: {
+        type: "String"
+      },
       DOB: {
         type: "Date", 
         required: true

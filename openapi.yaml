@@ -124,6 +124,8 @@ paths:
                   type: number
                 Subject:
                   type: string
+                Teacher:
+                  type: string
                 Test:
                   type: boolean
     get:
@@ -321,7 +323,8 @@ paths:
       x-skaffolder-returnDesc: 
       x-skaffolder-returnType: 
       x-skaffolder-url: /
-      x-skaffolder-roles: []
+      x-skaffolder-roles:
+        - 62623cfdc97c70218d6536cf
       summary: CRUD ACTION create
       tags:
         - Exam
@@ -339,6 +342,10 @@ paths:
             schema:
               type: object
               properties:
+                AssignedTeacher:
+                  type: string
+                Class:
+                  type: string
                 Location:
                   type: string
                 Marks:
@@ -381,7 +388,8 @@ paths:
       x-skaffolder-returnDesc: 
       x-skaffolder-returnType: 
       x-skaffolder-url: /{id}
-      x-skaffolder-roles: []
+      x-skaffolder-roles:
+        - 62623cfdc97c70218d6536cf
       summary: CRUD ACTION delete
       tags:
         - Exam
@@ -600,7 +608,8 @@ paths:
       x-skaffolder-returnDesc: 
       x-skaffolder-returnType: 
       x-skaffolder-url: /
-      x-skaffolder-roles: []
+      x-skaffolder-roles:
+        - 62623cfdc97c70218d6536cf
       summary: CRUD ACTION create
       tags:
         - Student
@@ -619,6 +628,8 @@ paths:
               type: object
               properties:
                 Address:
+                  type: string
+                Class:
                   type: string
                 DOB:
                   type: integer
@@ -670,7 +681,8 @@ paths:
       x-skaffolder-returnDesc: 
       x-skaffolder-returnType: 
       x-skaffolder-url: /{id}
-      x-skaffolder-roles: []
+      x-skaffolder-roles:
+        - 62623cfdc97c70218d6536cf
       summary: CRUD ACTION delete
       tags:
         - Student
@@ -796,7 +808,8 @@ paths:
       x-skaffolder-returnDesc: 
       x-skaffolder-returnType: 
       x-skaffolder-url: /
-      x-skaffolder-roles: []
+      x-skaffolder-roles:
+        - 62623cfdc97c70218d6536cf
       summary: CRUD ACTION create
       tags:
         - Teacher
@@ -860,7 +873,8 @@ paths:
       x-skaffolder-returnDesc: 
       x-skaffolder-returnType: 
       x-skaffolder-url: /{id}
-      x-skaffolder-roles: []
+      x-skaffolder-roles:
+        - 62623cfdc97c70218d6536cf
       summary: CRUD ACTION delete
       tags:
         - Teacher
@@ -1212,6 +1226,11 @@ components:
           x-skaffolder-id-attr: 626243c8c97c70218d653747
           x-skaffolder-type: String
           x-skaffolder-required: true
+        Teacher:
+          type: string
+          x-skaffolder-id-attr: 626a1d80c97c70218d653b22
+          x-skaffolder-type: String
+          x-skaffolder-required: true
         Test:
           type: boolean
           x-skaffolder-id-attr: 626243c8c97c70218d65374a
@@ -1232,6 +1251,7 @@ components:
         - Class
         - Lesson
         - Subject
+        - Teacher
     Exam:
       x-skaffolder-id: 626245eac97c70218d65375c
       x-skaffolder-id-db: 62623cfdc97c70218d6536c4
@@ -1241,10 +1261,21 @@ components:
         _id:
           type: string
           x-skaffolder-required: true
+        AssignedTeacher:
+          type: string
+          x-skaffolder-id-attr: 626a20b0c97c70218d653b24
+          x-skaffolder-type: String
+          x-skaffolder-required: true
+        Class:
+          type: string
+          x-skaffolder-id-attr: 626a1e53c97c70218d653b23
+          x-skaffolder-type: String
+          x-skaffolder-required: true
         Location:
           type: string
           x-skaffolder-id-attr: 626245eac97c70218d65375b
           x-skaffolder-type: String
+          x-skaffolder-required: true
         Marks:
           type: number
           x-skaffolder-id-attr: 626245eac97c70218d65375a
@@ -1271,6 +1302,9 @@ components:
           x-skaffolder-ent2: 62624039c97c70218d653727
       required:
         - _id
+        - AssignedTeacher
+        - Class
+        - Location
     Student:
       x-skaffolder-id: 62623f6ac97c70218d653724
       x-skaffolder-id-db: 62623cfdc97c70218d6536c4
@@ -1286,6 +1320,10 @@ components:
           x-skaffolder-type: String
           x-skaffolder-description: The address is for emergency cases.
           x-skaffolder-required: true
+        Class:
+          type: string
+          x-skaffolder-id-attr: 626a1c2dc97c70218d653b20
+          x-skaffolder-type: String
         DOB:
           type: integer
           x-skaffolder-id-attr: 62623f6ac97c70218d653723

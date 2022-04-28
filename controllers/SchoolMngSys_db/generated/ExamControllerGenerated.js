@@ -27,8 +27,8 @@ const generatedControllers = {
    */
   init: router => {
     const baseUrl = `${Properties.api}/exam`;
-    router.post(baseUrl + "", authorize([]), ExamController.create);
-    router.delete(baseUrl + "/:id", authorize([]), ExamController.delete);
+    router.post(baseUrl + "", authorize(["ADMIN"]), ExamController.create);
+    router.delete(baseUrl + "/:id", authorize(["ADMIN"]), ExamController.delete);
     router.get(baseUrl + "/findBy_Checklist/:key", authorize([]), ExamController.findBy_Checklist);
     router.get(baseUrl + "/findBy_Student/:key", authorize([]), ExamController.findBy_Student);
     router.get(baseUrl + "/findBy_Teacher/:key", authorize([]), ExamController.findBy_Teacher);

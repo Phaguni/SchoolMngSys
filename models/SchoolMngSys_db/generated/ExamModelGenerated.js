@@ -33,8 +33,17 @@ const generatedModel = {
       * Exam
       */
     const examSchema = new mongoose.Schema({
+      AssignedTeacher: {
+        type: "String", 
+        required: true
+      },
+      Class: {
+        type: "String", 
+        required: true
+      },
       Location: {
-        type: "String"
+        type: "String", 
+        required: true
       },
       Marks: {
         type: "Number"

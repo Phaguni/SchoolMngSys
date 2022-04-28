@@ -64,6 +64,10 @@ const generatedModel = {
         type: "String", 
         required: true
       },
+      Teacher: {
+        type: "String", 
+        required: true
+      },
       Test: {
         type: "Boolean"
       },
